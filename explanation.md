@@ -1,5 +1,5 @@
-## 1. Choice of the base image on which to build each container
-Base Image: **node:16-alpine** used to build both client and backend images
+## 1. Choice of the base image on which to build each container 
+Base Image: **node:16-alpine** used to build both client and backend images <br />
 Reasoning: <br />
 **Lightweight**: Alpine Linux is known for its small size and simplicity, which helps reduce the overall size of the docker image.<br />
 **Security**: Alpine Linux has a smaller attack surface due to its minimalistic nature, which enhances security.<br />

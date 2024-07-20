@@ -1,16 +1,15 @@
-# Docker Setup and Deployment Documentation
-## 1. Choice of Base Images:
-### Backend and Client Containers:
-Base Image: node:16-alpine
+## 1. Choice of the base image on which to build each container
+Base Image: **node:16-alpine** used to build both client and backend images
 Reasoning: 
-Lightweight: Alpine Linux is known for its small size and simplicity, which helps reduce the overall size of the Docker image.
-Security: Alpine Linux has a smaller attack surface due to its minimalistic nature, which enhances security.
-Performance: Using a smaller base image can lead to faster download times and improved performance when deploying the image.
-Node.js Version: Node.js 16 was chosen because it is a Long-Term Support (LTS) version, providing stability and support for production environments.
+**Lightweight**: Alpine Linux is known for its small size and simplicity, which helps reduce the overall size of the docker image.
+**Security**: Alpine Linux has a smaller attack surface due to its minimalistic nature, which enhances security.
+**Performance**: Using a smaller base image can lead to faster download times and improved performance when deploying the image.
+**Node.js Version**: Node.js 16 was chosen because it is a Long-Term Support (LTS) version, providing stability and support for production environments.
 
-## 2. Dockerfile Directives:
-### Backend Container:
-Directives Used: FROM, WORKDIR, COPY, RUN, EXPOSE, CMD
+## 2. Dockerfile directives used in the creation and running of each container:
+### Backend Dockerfile:
+Directives used: FROM, WORKDIR, COPY, RUN, EXPOSE, CMD
+
 
 Use Node.js 16 on Alpine Linux for the build stage.<br />
  ```FROM node:16-alpine AS builder```
@@ -42,11 +41,13 @@ Document that the container uses port 5000.<br />
 Define the command to run the application.<br />
  ```CMD ["npm", "start"]```
 
-### Client Container:
-Directives Used: FROM, WORKDIR, COPY, RUN, EXPOSE, CMD
+ Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.
+
+### Client Dockerfile:
+Directives used: FROM, WORKDIR, COPY, RUN, EXPOSE, CMD
 
 
-PUse Node.js 16 on Alpine Linux for the build stage.<br />
+Use Node.js 16 on Alpine Linux for the build stage.<br />
  ```FROM node:16-alpine AS builder```
 
 Set the working directory to /app.<br />
@@ -70,8 +71,10 @@ Set the working directory for the final image.<br />
 Copy built files from the build stage.<br />
  ```COPY --from=builder /app ./```
 
-Document that the container uses port 5000.<br />
- ```EXPOSE 5000```
+Document that the container uses port 3000.<br />
+ ```EXPOSE 3000```
 
 Define the command to run the application.<br />
  ```CMD ["npm", "start"]```
+
+ Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.

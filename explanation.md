@@ -1,9 +1,9 @@
 ## 1. Choice of the base image on which to build each container
 Base Image: **node:16-alpine** used to build both client and backend images
-Reasoning: 
-**Lightweight**: Alpine Linux is known for its small size and simplicity, which helps reduce the overall size of the docker image.
-**Security**: Alpine Linux has a smaller attack surface due to its minimalistic nature, which enhances security.
-**Performance**: Using a smaller base image can lead to faster download times and improved performance when deploying the image.
+Reasoning: <br />
+**Lightweight**: Alpine Linux is known for its small size and simplicity, which helps reduce the overall size of the docker image.<br />
+**Security**: Alpine Linux has a smaller attack surface due to its minimalistic nature, which enhances security.<br />
+**Performance**: Using a smaller base image can lead to faster download times and improved performance when deploying the image.<br />
 **Node.js Version**: Node.js 16 was chosen because it is a Long-Term Support (LTS) version, providing stability and support for production environments.
 
 ## 2. Dockerfile directives used in the creation and running of each container:

@@ -41,7 +41,15 @@ Document that the container uses port 5000.<br />
 Define the command to run the application.<br />
  ```CMD ["npm", "start"]```
 
- Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.
+ Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.<br />
+ Image size:
+ ![Backend Image Size](images/backend-img-size.png)
+
+ Image pushed to dockerhub:
+ ![Dockerhub](images/dockerhub.png)
+ ![Backend Image Dockerhub](images/backend-img-dockerhub.png)
+
+
 
 ### Client Dockerfile:
 Directives used: FROM, WORKDIR, COPY, RUN, EXPOSE, CMD
@@ -77,4 +85,10 @@ Document that the container uses port 3000.<br />
 Define the command to run the application.<br />
  ```CMD ["npm", "start"]```
 
- Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.
+ Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.<br />
+  Image size:
+  ![Client Image Size](images/client-img-size.png)
+
+ Image pushed to dockerhub:
+ ![Dockerhub](images/dockerhub.png)
+ ![Client Image Dockerhub](images/client-img-dockerhub.png)

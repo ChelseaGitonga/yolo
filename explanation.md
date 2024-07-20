@@ -42,7 +42,7 @@ Define the command to run the application.<br />
  ```CMD ["npm", "start"]```
 
  Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.<br />
- Image size:
+ Image size:<br />
  ![Backend Image Size](images/backend-img-size.png)
 
  Image pushed to dockerhub:
@@ -86,7 +86,7 @@ Define the command to run the application.<br />
  ```CMD ["npm", "start"]```
 
  Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.<br />
-  Image size:
+  Image size:<br />
   ![Client Image Size](images/client-img-size.png)
 
  Image pushed to dockerhub:

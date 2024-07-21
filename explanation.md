@@ -115,7 +115,7 @@ The above can be verified [here](docker-compose.yaml)
 
 
 ## 4. Docker-compose volume definition and usage (where necessary):
-In the docker-compose.yaml file, I defined three volumes: backend-data, client-data and mongo-data using the local driver, which stores data on the Docker host's local filesystem. Although these volumes are not currently mounted, they act as placeholders for potential future data persistence needs, ensuring scalability and readiness for future requirements.
+In the docker-compose.yaml file, I defined three volumes: backend-data, client-data and mongo-data using the local driver, which stores data on the Docker host's local filesystem.
 
 The above can be verified [here](docker-compose.yaml)
 
@@ -134,9 +134,11 @@ Containers:
 
 Networks:<br />
 ![Networks](images/networks.png)<br />
+![yolo-network-containers](images/yolo-network-containers.png)<br />
 
 Volumes:
 ![Volumes](images/volumes.png)<br />
+![container-volume](images/container-volume.png)<br />
 
 "Add Product" funtionality:
 ![Add Product](images/add-product.png)

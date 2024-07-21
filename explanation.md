@@ -62,16 +62,16 @@ Use Node.js 16 on Alpine Linux for the build stage.<br />
 Set the working directory to /app.<br />
  ```WORKDIR /app```
 
-Copy package.json and package-lock.json to the container.<br />
+Copy package files to the container.<br />
  ```COPY package*.json ./```
 
-Install production dependencies.<br />
- ```RUN npm install --production```
+Install dependencies from package-lock.json for a clean build.<br />
+ ```RUN npm ci```
 
 Copy the rest of the application code.<br />
  ```COPY . .```
 
-Build the application (e.g., for React apps).<br />
+Build the application (e.g., create production assets).<br />
  ```RUN npm run build```
 
 Start a new stage with Node.js 16 on Alpine Linux.<br />
@@ -80,16 +80,16 @@ Start a new stage with Node.js 16 on Alpine Linux.<br />
 Set the working directory for the final image.<br />
  ```WORKDIR /app```
 
-Copy built files from the build stage.<br />
- ```COPY --from=builder /app ./```
-
-Install the serve package globally.<br />
+Install serve globally to serve static files.<br />
  ```RUN npm install -g serve```
+
+Copy the build artifacts from the build stage.<br />
+ ```COPY --from=builder /app/build /app/build```
 
 Document that the container uses port 3000.<br />
  ```EXPOSE 3000```
 
-Use serve to serve the static files from the build directory.<br />
+Run serve to serve the built application on port 3000.<br />
  ```CMD ["serve", "-s", "build"]```
 
 Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.<br />

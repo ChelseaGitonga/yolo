@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: chelseagitonga/backend-img:v1.0.0
+    ports:
+      - "5000:5000"
+    volumes:
+      - backend-data:/var/lib/backend-data
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/yolo
+    depends_on:
+      - mongo
+    networks:
+      - yolo-network
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: chelseagitonga/client-img:v1.0.0
+    ports:
+      - "3000:3000"
+    volumes:
+      - client-data:/var/lib/client-data
+    depends_on:
+      - backend
+    networks:
+      - yolo-network
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - yolo-network
+
+networks:
+  yolo-network:
+    driver: bridge
+
+volumes:
+  backend-data:
+    driver: local
+  client-data:
+    driver: local
+  mongo-data:
+    driver: local

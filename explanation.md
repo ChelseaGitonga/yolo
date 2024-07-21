@@ -61,7 +61,7 @@ Use Node.js 16 on Alpine Linux for the build stage.<br />
 Set the working directory to /app.<br />
  ```WORKDIR /app```
 
-Copy package files to the container.<br />
+Copy package.json and package-lock.json to the container.<br />
  ```COPY package*.json ./```
 
 Install production dependencies.<br />
@@ -69,6 +69,9 @@ Install production dependencies.<br />
 
 Copy the rest of the application code.<br />
  ```COPY . .```
+
+Build the application (e.g., for React apps).<br />
+ ```RUN npm run build```
 
 Start a new stage with Node.js 16 on Alpine Linux.<br />
  ```FROM node:16-alpine```
@@ -79,16 +82,43 @@ Set the working directory for the final image.<br />
 Copy built files from the build stage.<br />
  ```COPY --from=builder /app ./```
 
+Install the serve package globally.<br />
+ ```RUN npm install -g serve```
+
 Document that the container uses port 3000.<br />
  ```EXPOSE 3000```
 
-Define the command to run the application.<br />
- ```CMD ["npm", "start"]```
+Use serve to serve the static files from the build directory.<br />
+ ```CMD ["serve", "-s", "build"]```
 
- Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.<br />
+Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.<br />
   Image size:<br />
   ![Client Image Size](images/client-img-size.png)
 
- Image pushed to dockerhub:
+Image pushed to dockerhub:
  ![Dockerhub](images/dockerhub.png)
  ![Client Image Dockerhub](images/client-img-dockerhub.png)
+## 3. Docker-compose Networking (Application port allocation and a bridge network implementation) where necessary:
+### Application port allocation:
+Client: Port 3000<br />
+Backend: Port 5000<br />
+Mongo: Port 27017
+
+### Bridge network implementation: 
+In the docker-compose.yaml file, I created a custom bridge network named yolo-network. This configuration ensures that our services (client, backend and mongo) are interconnected within the same network, facilitating seamless communication.
+
+## 4. Docker-compose volume definition and usage (where necessary):
+In the `docker-compose.yaml` file, I defined three volumes: `backend-data`, `client-data` and `mongo-data` using the local driver, which stores data on the Docker host's local filesystem. Although these volumes are not currently mounted, they act as placeholders for potential future data persistence needs, ensuring scalability and readiness for future requirements.
+
+## 5. Git workflow used to achieve the task:
+Utilized descriptive commit messages adhering to the conventional commit format.
+
+## 6. Successful running of the applications and if not, debugging measures applied:
+Successfully built images using `sudo docker compose build`, then ran containers with assigned networks and volumes using `sudo docker compose up`. Verified functionality by adding a product.
+
+
+## 7. Good practices such as Docker image tag naming standards for ease of identification of images and containers:
+Images: Followed semantic versioning (major.minor.patch) for Docker image tags.<br />
+
+Containers: Assigned names to containers using the `container_name` service configuration option.
+

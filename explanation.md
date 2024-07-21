@@ -125,11 +125,19 @@ I have made quality descriptive commits for each development step, provided comp
 The above can be verified [here](https://github.com/ChelseaGitonga/yolo/tree/main)
 
 ## 6. Successful running of the applications and if not, debugging measures applied:
-`sudo docker compose build` and `sudo docker compose up` successfully created images, containers, networks and volumes as shown in the images below:
-![Images](images/images.png)
-![Containers](images/containers.png)
-![Networks](images/networks.png)
-![Volumes](images/volumes.png)
+`sudo docker compose build` and `sudo docker compose up` successfully created images, containers, networks and volumes as shown in the images below:<br />
+Images:
+![Images](images/images.png)<br />
+
+Containers:
+![Containers](images/containers.png)<br />
+
+Networks:
+![Networks](images/networks.png)<br />
+
+Volumes:
+![Volumes](images/volumes.png)<br />
+
 "Add Product" funtionality:
 ![Add Product](images/add-product.png)
 

@@ -50,7 +50,7 @@ Define the command to run the application.<br />
  ![Dockerhub](images/dockerhub.png)
  ![Backend Image Dockerhub](images/backend-img-dockerhub.png)
 
-
+The above can be verified [here](https://hub.docker.com/repositories/chelseagitonga)
 
 ### Client Dockerfile:
 Directives used: FROM, WORKDIR, COPY, RUN, EXPOSE, CMD
@@ -99,6 +99,9 @@ Multi-stage build process helps keep the final docker image lean by separating t
 Image pushed to dockerhub:
  ![Dockerhub](images/dockerhub.png)
  ![Client Image Dockerhub](images/client-img-dockerhub.png)
+
+The above can be verified [here](https://hub.docker.com/repositories/chelseagitonga)
+
 ## 3. Docker-compose Networking (Application port allocation and a bridge network implementation) where necessary:
 ### Application port allocation:
 Client: Port 3000<br />
@@ -106,10 +109,15 @@ Backend: Port 5000<br />
 Mongo: Port 27017
 
 ### Bridge network implementation: 
-In the docker-compose.yaml file, I created a custom bridge network named yolo-network. This configuration ensures that our services (client, backend and mongo) are interconnected within the same network, facilitating seamless communication.
+In the docker-compose.yaml file, I created a custom bridge network named yolo-network. This configuration ensures that our services (client, backend and mongo) are interconnected within the same network, facilitating seamless communication.<br />
+
+The above can be verified [here](docker-compose.yaml)
+
 
 ## 4. Docker-compose volume definition and usage (where necessary):
 In the `docker-compose.yaml` file, I defined three volumes: `backend-data`, `client-data` and `mongo-data` using the local driver, which stores data on the Docker host's local filesystem. Although these volumes are not currently mounted, they act as placeholders for potential future data persistence needs, ensuring scalability and readiness for future requirements.
+
+The above can be verified [here](docker-compose.yaml)
 
 ## 5. Git workflow used to achieve the task:
 Utilized descriptive commit messages adhering to the conventional commit format.

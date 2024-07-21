@@ -130,7 +130,7 @@ Images:
 ![Images](images/images.png)<br />
 
 Containers:
-<img src="images/containers.png" alt="containers" width="2000"><br />
+<img src="images/containers.png" alt="containers" width="1000" height="100"><br />
 
 Networks:<br />
 ![Networks](images/networks.png)<br />

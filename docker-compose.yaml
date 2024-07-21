@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   backend:
@@ -6,6 +6,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     image: chelseagitonga/backend-img:v1.0.0
+    container_name: backend-container
     ports:
       - "5000:5000"
     volumes:
@@ -22,6 +23,7 @@ services:
       context: ./client
       dockerfile: Dockerfile
     image: chelseagitonga/client-img:v1.0.0
+    container_name: client-container
     ports:
       - "3000:3000"
     volumes:
@@ -33,6 +35,7 @@ services:
 
   mongo:
     image: mongo
+    container_name: mongo-container
     ports:
       - "27017:27017"
     volumes:

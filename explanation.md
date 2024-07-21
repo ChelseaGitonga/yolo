@@ -125,11 +125,11 @@ I have made quality descriptive commits for each development step, provided comp
 The above can be verified [here](https://github.com/ChelseaGitonga/yolo/tree/main)
 
 ## 6. Successful running of the applications and if not, debugging measures applied:
-Successfully built images using `sudo docker compose build`, then ran containers with assigned networks and volumes using `sudo docker compose up`. Verified functionality by adding a product.
-
-
-## 7. Good practices such as Docker image tag naming standards for ease of identification of images and containers:
-Images: Followed semantic versioning (major.minor.patch) for Docker image tags.<br />
-
-Containers: Assigned names to containers using the `container_name` service configuration option.
+`sudo docker compose build` and `sudo docker compose up` successfully created images, containers, networks and volumes as shown in the images below:
+![Images](images/images.png)
+![Containers](images/containers.png)
+![Networks](images/networks.png)
+![Volumes](images/volumes.png)
+"Add Product" funtionality:
+![Add Product](images/add-product.png)
 

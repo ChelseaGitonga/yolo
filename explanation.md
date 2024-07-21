@@ -132,7 +132,7 @@ Images:
 Containers:
 ![Containers](images/containers.png)<br />
 
-Networks:
+Networks:<br />
 ![Networks](images/networks.png)<br />
 
 Volumes:

@@ -130,7 +130,7 @@ Images:
 ![Images](images/images.png)<br />
 
 Containers:
-<img src="images/containers.png" alt="containers" width="1500" height="1000"><br />
+<img src="images/containers.png" alt="containers" width="2000"><br />
 
 Networks:<br />
 ![Networks](images/networks.png)<br />
@@ -138,7 +138,7 @@ Networks:<br />
 
 Volumes:
 ![Volumes](images/volumes.png)<br />
-<img src="images/container-volume.png" alt="container-volume" width="800" height="600"><br />
+<img src="images/container-volume.png" alt="container-volume" width="2000"><br />
 
 "Add Product" funtionality:
 ![Add Product](images/add-product.png)

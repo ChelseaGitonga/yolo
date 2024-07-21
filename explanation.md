@@ -138,7 +138,7 @@ Networks:<br />
 
 Volumes:
 ![Volumes](images/volumes.png)<br />
-<img src="images/container-volume.png" alt="container-volume" width="1000" height="100"><br />
+<img src="images/container-volume.png" alt="container-volume" width="1200" height="200"><br />
 
 "Add Product" funtionality:
 ![Add Product](images/add-product.png)

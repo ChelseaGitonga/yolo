@@ -120,7 +120,9 @@ In the docker-compose.yaml file, I defined three volumes: backend-data, client-d
 The above can be verified [here](docker-compose.yaml)
 
 ## 5. Git workflow used to achieve the task:
-Utilized descriptive commit messages adhering to the conventional commit format.
+I have made quality descriptive commits for each development step, provided comprehensive descriptions, documented a thorough README, organized a proper folder structure and maintained a minimum of 10 commits.
+
+The above can be verified [here](https://github.com/ChelseaGitonga/yolo/tree/main)
 
 ## 6. Successful running of the applications and if not, debugging measures applied:
 Successfully built images using `sudo docker compose build`, then ran containers with assigned networks and volumes using `sudo docker compose up`. Verified functionality by adding a product.

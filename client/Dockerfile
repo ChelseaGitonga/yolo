@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --production
+RUN npm ci
 
 COPY . .
 
@@ -14,9 +14,9 @@ FROM node:16-alpine
 
 WORKDIR /app
 
-COPY --from=builder /app ./
-
 RUN npm install -g serve
+
+COPY --from=builder /app/build /app/build
 
 EXPOSE 3000
 

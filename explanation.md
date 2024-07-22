@@ -126,20 +126,20 @@ The above can be verified [here](https://github.com/ChelseaGitonga/yolo/tree/mai
 
 ## 6. Successful running of the applications and if not, debugging measures applied:
 `sudo docker compose build` and `sudo docker compose up` successfully created images, containers, networks and volumes as shown in the images below:<br />
-Images:
+**Images**:
 ![Images](images/images.png)<br />
 
-Containers:
+**Containers**:
 <img src="images/containers.png" alt="containers" width="1000" height="100"><br />
 
-Networks:<br />
+**Networks**:<br />
 ![Networks](images/networks.png)<br />
 ![yolo-network-containers](images/yolo-network-containers.png)<br />
 
-Volumes:
+**Volumes**:
 ![Volumes](images/volumes.png)<br />
 <img src="images/container-volume.png" alt="container-volume" width="1000" height="250"><br />
 
-"Add Product" funtionality:
+**"Add Product" funtionality**:
 ![Add Product](images/add-product.png)
 

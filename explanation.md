@@ -104,9 +104,9 @@ The above can be verified [here](https://hub.docker.com/repositories/chelseagito
 
 ## 3. Docker-compose Networking (Application port allocation and a bridge network implementation) where necessary:
 ### Application port allocation:
-Client: Port 3000<br />
-Backend: Port 5000<br />
-Mongo: Port 27017
+- Client: Port 3000<br />
+- Backend: Port 5000<br />
+- Mongo: Port 27017
 
 ### Bridge network implementation: 
 In the docker-compose.yaml file, I created a custom bridge network named yolo-network. This configuration ensures that our services (client, backend and mongo) are interconnected within the same network, facilitating seamless communication.<br />

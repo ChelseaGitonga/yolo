@@ -9,7 +9,7 @@ Reasoning: <br />
 
 ## 2. Dockerfile directives used in the creation and running of each container:
 ### Backend Dockerfile:
-Directives used: FROM, WORKDIR, COPY, RUN, EXPOSE, CMD
+- **Directives used**: FROM, WORKDIR, COPY, RUN, EXPOSE, CMD
 
 
 Use Node.js 16 on Alpine Linux for the build stage.<br />
@@ -42,18 +42,18 @@ Document that the container uses port 5000.<br />
 Define the command to run the application.<br />
  ```CMD ["npm", "start"]```
 
- Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.<br />
- Image size:<br />
+ - Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.<br />
+ **Image size**:<br />
  ![Backend Image Size](images/backend-img-size.png)
 
- Image pushed to dockerhub:
+ **Image pushed to dockerhub**:
  ![Dockerhub](images/dockerhub.png)
  ![Backend Image Dockerhub](images/backend-img-dockerhub.png)
 
 The above can be verified [here](https://hub.docker.com/repositories/chelseagitonga)
 
 ### Client Dockerfile:
-Directives used: FROM, WORKDIR, COPY, RUN, EXPOSE, CMD
+- **Directives used**: FROM, WORKDIR, COPY, RUN, EXPOSE, CMD
 
 
 Use Node.js 16 on Alpine Linux for the build stage.<br />
@@ -92,11 +92,11 @@ Document that the container uses port 3000.<br />
 Run serve to serve the built application on port 3000.<br />
  ```CMD ["serve", "-s", "build"]```
 
-Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.<br />
-  Image size:<br />
-  ![Client Image Size](images/client-img-size.png)
+- Multi-stage build process helps keep the final docker image lean by separating the build environment from the runtime environment.<br />
+**Image size**:<br />
+![Client Image Size](images/client-img-size.png)
 
-Image pushed to dockerhub:
+**Image pushed to dockerhub**:
  ![Dockerhub](images/dockerhub.png)
  ![Client Image Dockerhub](images/client-img-dockerhub.png)
 

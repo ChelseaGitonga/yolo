@@ -9,5 +9,16 @@
       apt:
         upgrade: dist
 
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Install npm
+      apt:
+        name: npm
+        state: present
+
+
 
 

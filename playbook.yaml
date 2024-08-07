@@ -1,16 +1,13 @@
 - hosts: all
   become: true
-  tasks: 
-    - name: Test Connectivity
-      ping:
-
-    - name: Update Server
+  tasks:
+    - name: Update package list
       apt:
         update_cache: yes
 
-    - name: Install Apache
+    - name: Upgrade all packages
       apt:
-        name: apache2
-        state: present
+        upgrade: dist
+
 
 

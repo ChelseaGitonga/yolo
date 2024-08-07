@@ -1,0 +1,16 @@
+- hosts: all
+  become: true
+  tasks: 
+    - name: Test Connectivity
+      ping:
+
+    - name: Update Server
+      apt:
+        update_cache: yes
+
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+
+

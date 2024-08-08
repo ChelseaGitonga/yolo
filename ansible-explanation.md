@@ -55,7 +55,7 @@ An Ansible playbook that runs tasks on all hosts with elevated privileges (using
 
 ## 5. roles
 - system_updates
-Updating the package list and upgrading system packages
+This role ensures that the system's package list is up-to-date and that all installed packages are upgraded to their latest versions.
     ```
     - name: Update package list
     apt:
@@ -67,7 +67,7 @@ Updating the package list and upgrading system packages
     ```
 
 - nodejs_npm
-Installing Node.js and npm
+This role installs Node.js and npm, the JavaScript runtime and its package manager, which are essential for running and managing Node.js applications.
     ```    
     - name: Install Node.js
     apt:
@@ -81,7 +81,7 @@ Installing Node.js and npm
     ```
 
 - clone_repository
-Cloning the repository from a version control system like Git.
+This role clones the application's source code from a Git repository, ensuring that the latest code is available on the VM.
     ```    
     - name: Clone the repository
     git:
@@ -91,7 +91,7 @@ Cloning the repository from a version control system like Git.
     ```
 
 - install_dependencies
-Install various system dependencies that are needed for the application or environment.
+This role installs additional system dependencies required by the application or environment, such as tools and libraries necessary for operation or development.
     ```
     - name: Install dependencies
     apt:
@@ -105,7 +105,7 @@ Install various system dependencies that are needed for the application or envir
         update_cache: yes
     ```
 - docker
-Docker installation and configuration
+This role sets up Docker, a containerization platform, by installing Docker Engine and configuring the system to use it. Docker allows applications to run in isolated environments called containers.
     ```    
     - name: Add Docker GPG key
     apt_key:
@@ -137,7 +137,7 @@ Docker installation and configuration
     ```
 
 - docker_compose
-Running Docker Compose commands
+This role runs Docker Compose to start the application's containers, orchestrating the setup of the backend, frontend, and database services as defined in a docker-compose.yaml file.
     ```
     - name: Start Docker Compose
     command: docker-compose up -d

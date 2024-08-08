@@ -145,5 +145,5 @@ This role runs Docker Compose to start the application's containers, orchestrati
         chdir: /home/vagrant/yolo
     ```
 ## 6. Images, Containers, Network and Volumes
-**Command**: vagrant provision then access the server termi
+**Command**: vagrant provision then access the server terminal
 ![Evidence](images/evidence.png)

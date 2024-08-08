@@ -1,24 +1,9 @@
 - hosts: all
   become: true
-  tasks:
-    - name: Update package list
-      apt:
-        update_cache: yes
-
-    - name: Upgrade all packages
-      apt:
-        upgrade: dist
-
-    - name: Install Node.js
-      apt:
-        name: nodejs
-        state: present
-
-    - name: Install npm
-      apt:
-        name: npm
-        state: present
-
-
-
-
+  roles:
+    - system_updates
+    - nodejs_npm
+    - clone_repository
+    - install_dependencies
+    - docker
+    - docker_compose

@@ -144,6 +144,6 @@ An Ansible playbook that runs tasks on all hosts with elevated privileges (using
         args:
             chdir: /home/vagrant/yolo
         ```
-## Images, Containers, Network and Volumes
+## 6. Images, Containers, Network and Volumes
 **Command**: vagrant provision
 ![Evidence](images/evidence.png)

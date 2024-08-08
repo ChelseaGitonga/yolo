@@ -147,8 +147,6 @@ This role runs Docker Compose to start the application's containers, orchestrati
 ## 6. Images, Containers, Network and Volumes
 **Command**: vagrant provision, then access the server terminal
 ![Evidence](images/evidence.png)
-<br />
-Open your browser and visit the website at **http://127.0.0.1:3000**.
-<br />
+<br />Open your browser and visit the website at **http://127.0.0.1:3000**.<br />
 ![yolomy](images/yolomy.png)
 ![product-added-evidence](images/product-added-evidence.png)

@@ -54,7 +54,7 @@ An Ansible playbook that runs tasks on all hosts with elevated privileges (using
 ```
 
 ## 5. roles
-- system_updates
+- **system_updates**:
 This role ensures that the system's package list is up-to-date and that all installed packages are upgraded to their latest versions.
     ```
     - name: Update package list
@@ -66,7 +66,7 @@ This role ensures that the system's package list is up-to-date and that all inst
         upgrade: dist
     ```
 
-- nodejs_npm
+- **nodejs_npm**:
 This role installs Node.js and npm, the JavaScript runtime and its package manager, which are essential for running and managing Node.js applications.
     ```    
     - name: Install Node.js
@@ -80,7 +80,7 @@ This role installs Node.js and npm, the JavaScript runtime and its package manag
         state: present
     ```
 
-- clone_repository
+- **clone_repository**:
 This role clones the application's source code from a Git repository, ensuring that the latest code is available on the VM.
     ```    
     - name: Clone the repository
@@ -90,7 +90,7 @@ This role clones the application's source code from a Git repository, ensuring t
         version: 'main'
     ```
 
-- install_dependencies
+- **install_dependencies**:
 This role installs additional system dependencies required by the application or environment, such as tools and libraries necessary for operation or development.
     ```
     - name: Install dependencies
@@ -104,7 +104,7 @@ This role installs additional system dependencies required by the application or
         state: present
         update_cache: yes
     ```
-- docker
+- **docker**:
 This role sets up Docker, a containerization platform, by installing Docker Engine and configuring the system to use it. Docker allows applications to run in isolated environments called containers.
     ```    
     - name: Add Docker GPG key
@@ -136,7 +136,7 @@ This role sets up Docker, a containerization platform, by installing Docker Engi
         append: yes
     ```
 
-- docker_compose
+- **docker_compose**:
 This role runs Docker Compose to start the application's containers, orchestrating the setup of the backend, frontend, and database services as defined in a docker-compose.yaml file.
     ```
     - name: Start Docker Compose

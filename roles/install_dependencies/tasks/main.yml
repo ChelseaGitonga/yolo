@@ -1,0 +1,12 @@
+---
+# tasks file for install_dependencies
+- name: Install dependencies
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - python3-pip
+    state: present
+    update_cache: yes

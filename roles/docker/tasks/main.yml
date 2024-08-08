@@ -1,0 +1,29 @@
+---
+# tasks file for docker
+- name: Add Docker GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+- name: Update apt and install Docker
+  apt:
+    name: docker-ce
+    state: present
+    update_cache: yes
+
+- name: Install Docker Compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: '0755'
+
+- name: Add vagrant user to docker group
+  user:
+    name: vagrant
+    groups: docker
+    append: yes

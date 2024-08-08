@@ -1,0 +1,9 @@
+---
+# tasks file for system_updates
+- name: Update package list
+  apt:
+    update_cache: yes
+
+- name: Upgrade all packages
+  apt:
+    upgrade: dist

@@ -1,0 +1,7 @@
+---
+# tasks file for clone_repository
+- name: Clone the repository
+  git:
+    repo: 'https://github.com/ChelseaGitonga/yolo.git'
+    dest: '/home/vagrant/yolo'
+    version: 'main'

@@ -1,11 +1,11 @@
-## 1. hosts file
+## 1. hosts
 This setup allows Ansible to manage the VM created by Vagrant as if it were any other remote host.
 ```
 [vagrant]
 default ansible_host=127.0.0.1 ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
 ```
 
-## 2. ansible.cfg file
+## 2. ansible.cfg
 - **inventory = hosts**: Sets hosts as the default inventory file.
 - **host_key_checking = False**: Disables SSH host key checking, allowing easier connections to new or temporary hosts.
 - **retry_files_enabled = False**: Disables the creation of retry files after failed playbook runs, which can help keep the working directory clean.
@@ -37,4 +37,18 @@ Vagrant.configure("2") do |config|
     ansible.verbose = "vv"
   end
 end
+```
+
+## 4. playbook.yaml
+An Ansible playbook that runs tasks on all hosts with elevated privileges (using become: true). The tasks are organized into roles, which is a modular way to manage configurations.
+```
+- hosts: all
+  become: true
+  roles:
+    - system_updates
+    - nodejs_npm
+    - clone_repository
+    - install_dependencies
+    - docker
+    - docker_compose
 ```

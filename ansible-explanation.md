@@ -56,91 +56,91 @@ An Ansible playbook that runs tasks on all hosts with elevated privileges (using
 ## 5. roles
     - system_updates
     Updating the package list and upgrading system packages
-```
-- name: Update package list
-  apt:
-    update_cache: yes
+        ```
+        - name: Update package list
+        apt:
+            update_cache: yes
 
-- name: Upgrade all packages
-  apt:
-    upgrade: dist
-```
+        - name: Upgrade all packages
+        apt:
+            upgrade: dist
+        ```
 
     - nodejs_npm
     Installing Node.js and npm
-```    
-- name: Install Node.js
-  apt:
-    name: nodejs
-    state: present
+        ```    
+        - name: Install Node.js
+        apt:
+            name: nodejs
+            state: present
 
-- name: Install npm
-  apt:
-    name: npm
-    state: present
-```
+        - name: Install npm
+        apt:
+            name: npm
+            state: present
+        ```
 
     - clone_repository
     Cloning the repository from a version control system like Git.
-```    
-- name: Clone the repository
-  git:
-    repo: 'https://github.com/ChelseaGitonga/yolo.git'
-    dest: '/home/vagrant/yolo'
-    version: 'main'
-```
+        ```    
+        - name: Clone the repository
+        git:
+            repo: 'https://github.com/ChelseaGitonga/yolo.git'
+            dest: '/home/vagrant/yolo'
+            version: 'main'
+        ```
 
     - install_dependencies
     Install various system dependencies that are needed for the application or environment.
-```
-- name: Install dependencies
-  apt:
-    name:
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - software-properties-common
-      - python3-pip
-    state: present
-    update_cache: yes
-```
+        ```
+        - name: Install dependencies
+        apt:
+            name:
+            - apt-transport-https
+            - ca-certificates
+            - curl
+            - software-properties-common
+            - python3-pip
+            state: present
+            update_cache: yes
+        ```
     - docker
     Docker installation and configuration
-```    
-- name: Add Docker GPG key
-  apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    state: present
+        ```    
+        - name: Add Docker GPG key
+        apt_key:
+            url: https://download.docker.com/linux/ubuntu/gpg
+            state: present
 
-- name: Add Docker repository
-  apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
-    state: present
+        - name: Add Docker repository
+        apt_repository:
+            repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+            state: present
 
-- name: Update apt and install Docker
-  apt:
-    name: docker-ce
-    state: present
-    update_cache: yes
+        - name: Update apt and install Docker
+        apt:
+            name: docker-ce
+            state: present
+            update_cache: yes
 
-- name: Install Docker Compose
-  get_url:
-    url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
-    dest: /usr/local/bin/docker-compose
-    mode: '0755'
+        - name: Install Docker Compose
+        get_url:
+            url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+            dest: /usr/local/bin/docker-compose
+            mode: '0755'
 
-- name: Add vagrant user to docker group
-  user:
-    name: vagrant
-    groups: docker
-    append: yes
-```
+        - name: Add vagrant user to docker group
+        user:
+            name: vagrant
+            groups: docker
+            append: yes
+        ```
 
     - docker_compose
     Running Docker Compose commands
-```
-- name: Start Docker Compose
-  command: docker-compose up -d
-  args:
-    chdir: /home/vagrant/yolo
-```
+        ```
+        - name: Start Docker Compose
+        command: docker-compose up -d
+        args:
+            chdir: /home/vagrant/yolo
+        ```

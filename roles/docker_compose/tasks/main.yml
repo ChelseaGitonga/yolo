@@ -1,6 +1,0 @@
----
-# tasks file for docker_compose
-- name: Start Docker Compose
-  command: docker-compose up -d
-  args:
-    chdir: /home/vagrant/yolo

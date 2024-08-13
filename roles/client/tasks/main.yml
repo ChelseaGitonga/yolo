@@ -1,0 +1,6 @@
+---
+# tasks file for client
+- name: Build and start the frontend container
+  command: docker-compose up -d client
+  args:
+    chdir: /home/vagrant/yolo

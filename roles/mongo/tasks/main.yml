@@ -1,0 +1,6 @@
+---
+# tasks file for mongo
+- name: Build and start the MongoDB container
+  command: docker-compose up -d mongo
+  args:
+    chdir: /home/vagrant/yolo

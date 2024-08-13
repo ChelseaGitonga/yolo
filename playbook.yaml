@@ -6,4 +6,6 @@
     - clone_repository
     - install_dependencies
     - docker
-    - docker_compose
+    - mongo
+    - backend
+    - client

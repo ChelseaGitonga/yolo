@@ -20,6 +20,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
+  volumeName: mongo-pv  # This line manually binds the PVC to the PV
 ---
 apiVersion: apps/v1
 kind: StatefulSet

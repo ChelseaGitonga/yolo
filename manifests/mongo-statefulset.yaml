@@ -8,7 +8,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /mnt/data/mongo
+    path: /var/lib/mongo
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -20,7 +20,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: mongo-pv  # This line manually binds the PVC to the PV
+  storageClassName: ""
 ---
 apiVersion: apps/v1
 kind: StatefulSet

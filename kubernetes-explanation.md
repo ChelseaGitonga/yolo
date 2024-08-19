@@ -96,6 +96,13 @@ spec:
 ```
 
 ## 3. mongo-statefulset.yaml
+This YAML configuration is designed to deploy a MongoDB instance in a Kubernetes cluster with persistent storage and stable network identity. It achieves this by using a combination of PersistentVolume (PV), PersistentVolumeClaim (PVC), StatefulSet and a Service.
+- **PersistentVolume (PV):** A PersistentVolume is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes. It is used to store data persistently, even if the pod is deleted or rescheduled.
+- **PersistentVolumeClaim (PVC):** A PersistentVolumeClaim is a request for storage by a user. It can be used by pods to claim the PersistentVolume and access the storage.
+- **StatefulSet:** A StatefulSet is a Kubernetes resource used to manage stateful applications. It provides guarantees about the ordering and uniqueness of pods. This is particularly useful for applications like databases, where stable network identity and persistent storage are important.
+- **Service:** The Service exposes the MongoDB instance to external clients or other applications. The `LoadBalancer` type of Service creates an external IP address that forwards traffic to the MongoDB pod.
+- **Summary:**
+This configuration sets up a MongoDB instance with persistent storage and stable network identity using Kubernetes resources. The PersistentVolume and PersistentVolumeClaim ensure that the MongoDB data is stored persistently, even if the pod is deleted or rescheduled. The StatefulSet manages the MongoDB pod, ensuring it has a consistent network identity and stable storage. Finally, the Service exposes the MongoDB instance externally, allowing it to be accessed by other applications or users.
 
 ```
 apiVersion: v1
@@ -104,11 +111,11 @@ metadata:
   name: mongo-pv
 spec:
   capacity:
-    storage: 1Gi
+    storage: 1Gi # Specifies the storage capacity of 1 Gigabyte
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteOnce # The volume can be mounted as read-write by a single node
   hostPath:
-    path: /mnt/data/mongo
+    path: /mnt/data/mongo # The storage is backed by the host machine’s filesystem at the specified path
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -116,53 +123,53 @@ metadata:
   name: mongo-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteOnce # Requests a volume that can be mounted as read-write by a single node
   resources:
     requests:
-      storage: 1Gi
+      storage: 1Gi # Requests 1 Gigabyte of storage
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongo-statefulset
 spec:
-  serviceName: "mongo-service"
-  replicas: 1
+  serviceName: "mongo-service" # The name of the headless service that manages the network identity of the pods
+  replicas: 1 # Specifies that only one MongoDB pod should be deployed
   selector:
     matchLabels:
-      app: mongo
+      app: mongo # The StatefulSet targets pods with the label `app: mongo`
   template:
     metadata:
       labels:
-        app: mongo
+        app: mongo # Applies the label `app: mongo` to the pod template
     spec:
       containers:
-        - name: mongo
-          image: mongo:latest
+        - name: mongo # Defines the container running MongoDB
+          image: mongo:latest # Specifies the Docker image for the MongoDB container
           ports:
-            - containerPort: 27017
+            - containerPort: 27017 # Exposes port 27017 for MongoDB, the default port for MongoDB connections
           volumeMounts:
-            - name: mongo-storage
-              mountPath: /data/db
+            - name: mongo-storage # The volume mount name, corresponding to the volumeClaimTemplates
+              mountPath: /data/db # The directory inside the container where the volume is mounted. MongoDB uses `/data/db` to store its data
   volumeClaimTemplates:
     - metadata:
-        name: mongo-storage
+        name: mongo-storage # Name of the volume claim template used to create a PVC for each pod replica
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: [ "ReadWriteOnce" ] # The same access mode as the PVC, allowing the volume to be mounted as read-write by one node
         resources:
           requests:
-            storage: 1Gi
+            storage: 1Gi # Requests 1 Gigabyte of storage for the pod’s data
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: mongo-service
 spec:
-  type: LoadBalancer
+  type: LoadBalancer # Exposes the service externally using a cloud provider's load balancer
   selector:
-    app: mongo
+    app: mongo # Targets pods with the label `app: mongo`
   ports:
-    - protocol: TCP
-      port: 27017
-      targetPort: 27017
+    - protocol: TCP # Uses TCP as the communication protocol
+      port: 27017 # The external port exposed by the service
+      targetPort: 27017 # The port on the pod where the traffic is directed, matching the container port of the MongoDB pod
 ```

@@ -101,8 +101,6 @@ This YAML configuration is designed to deploy a MongoDB instance in a Kubernetes
 - **PersistentVolumeClaim (PVC):** A PersistentVolumeClaim is a request for storage by a user. It can be used by pods to claim the PersistentVolume and access the storage.
 - **StatefulSet:** A StatefulSet is a Kubernetes resource used to manage stateful applications. It provides guarantees about the ordering and uniqueness of pods. This is particularly useful for applications like databases, where stable network identity and persistent storage are important.
 - **Service:** The Service exposes the MongoDB instance to external clients or other applications. The `LoadBalancer` type of Service creates an external IP address that forwards traffic to the MongoDB pod.
-**Summary:**
-This configuration sets up a MongoDB instance with persistent storage and stable network identity using Kubernetes resources. The PersistentVolume and PersistentVolumeClaim ensure that the MongoDB data is stored persistently, even if the pod is deleted or rescheduled. The StatefulSet manages the MongoDB pod, ensuring it has a consistent network identity and stable storage. Finally, the Service exposes the MongoDB instance externally, allowing it to be accessed by other applications or users.
 
 ```
 apiVersion: v1
@@ -173,3 +171,5 @@ spec:
       port: 27017 # The external port exposed by the service
       targetPort: 27017 # The port on the pod where the traffic is directed, matching the container port of the MongoDB pod
 ```
+**Summary:**
+This configuration sets up a MongoDB instance with persistent storage and stable network identity using Kubernetes resources. The PersistentVolume and PersistentVolumeClaim ensure that the MongoDB data is stored persistently, even if the pod is deleted or rescheduled. The StatefulSet manages the MongoDB pod, ensuring it has a consistent network identity and stable storage. Finally, the Service exposes the MongoDB instance externally, allowing it to be accessed by other applications or users.

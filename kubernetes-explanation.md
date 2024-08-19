@@ -173,3 +173,8 @@ spec:
 ```
 **Summary:**
 This configuration sets up a MongoDB instance with persistent storage and stable network identity using Kubernetes resources. The PersistentVolume and PersistentVolumeClaim ensure that the MongoDB data is stored persistently, even if the pod is deleted or rescheduled. The StatefulSet manages the MongoDB pod, ensuring it has a consistent network identity and stable storage. Finally, the Service exposes the MongoDB instance externally, allowing it to be accessed by other applications or users.
+## 4. Evidence
+![nodes](images/nodes.png)
+![pods](images/pods.png)
+![objects](images/kubernetesobjects.png)
+![yolo](images/gcpyolo.png)
